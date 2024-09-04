@@ -17,6 +17,7 @@ An HTML file called imageViewer.html (see Computer Vision Folder) is used to dis
 compatible with the 7-bit ASCII characters).
 
 **Example:**
+
 ![Screenshot 2024-09-04 151605](https://github.com/user-attachments/assets/93cb322a-bf13-4b70-ab05-31769e8f8739)
 
 **Storing a .pcimg File**
@@ -49,10 +50,14 @@ The **compressConvo()** function then finds the range of values in self.convo, a
 using a ratio of 127/imageRange. The final step is using the inputted compression threshold (which we mostly determined by trial and error) to use as a cutoff for
 weak edges. In other words, this threshold reduces the noise. A higher value restricts more values and vice versa with a lower value.
 
-**Example:**
-Before:
+### Example:
+
+**Before:**
+
 ![Screenshot 2024-09-04 155037](https://github.com/user-attachments/assets/0f7c802e-4f51-4f00-8c02-6beec5cd9161)
-After:
+
+**After:**
+
 ![Screenshot 2024-09-04 155135](https://github.com/user-attachments/assets/1015ab21-9539-4fbb-9009-9157e976869e)
 
 ## Hough Transform
@@ -62,11 +67,13 @@ self.convo list of lists by stepping (10) pixels in both the x and y directions,
 the current radius. This process was repeated after every radius+=5 and went until the theoretical maximum radius of min(image.height,image.width)//2.
 
 **Our Results**
+
 ![Screenshot 2024-09-04 161355](https://github.com/user-attachments/assets/f76c9478-6079-4c53-8566-f43af4295fb5)
 
 Then, using the same logic and algorithm from compressConvo(), we made a **compressHough()** function to act on the self.hough instance variable.
 
 **After Compression**
+
 ![Screenshot 2024-09-04 162123](https://github.com/user-attachments/assets/1790b7f2-cfb9-4bbe-87a1-65140ed2476c)
 
 Then, we made a **findBlob()** function that convolutes the above image with this matrix:
@@ -75,8 +82,10 @@ Then, we made a **findBlob()** function that convolutes the above image with thi
  [5,3,0,3,5],
  [5,3,3,3,5],
  [5,5,5,5,5]]
+ 
  Finally, this image is compressed for a final time:
 
  **After findBlob() and second compression**
+
 ![Screenshot 2024-09-04 161926](https://github.com/user-attachments/assets/34bbd82a-3a22-4a69-85e8-973e7af90f42)
 
