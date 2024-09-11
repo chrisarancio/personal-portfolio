@@ -1,5 +1,5 @@
 # Battleship in Java
-## This is a single player recreation of Battleship where the player will select how many torpedoes (guesses) they will get to sink the randoized positions of the ships.
+## This is a single player recreation of Battleship where the player will select how many torpedoes (guesses) they will get to sink the randomized positions of the ships.
 
 ## Download and run the .jar file to play Battleship
 ### The .jar file can be downloaded from GitHub. The program can then be run on the Command Line/Terminal on a computer with Java installed using the command: 
