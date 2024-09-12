@@ -2,5 +2,4 @@
 
 ## The work has been done both in a Python Jupyter Notebook and in an Orange Workflow.
 
-## I have attached the original Voters.csv file and the blank NewVoters.csv for the models to run their predictions on. The Predictions.csv file includes the new voters and the predicted results for the new models based
-## on the models created in the Voters_Modeling_Python.ipynb.
+## I have attached the original Voters.csv file and the blank NewVoters.csv for the models to run their predictions on. The Predictions.csv file includes the new voters and the predicted results for the new models based on the models created in the Voters_Modeling_Python.ipynb.
