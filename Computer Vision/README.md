@@ -4,7 +4,7 @@
 ## Propriertery Image Format
 ### The .pcimg Image Format
 This image format was used in my Computer Vision coursework as a way to help us understand basic Computer Vision concepts and to enforce original work. The goal of this
-format was not efficiency and I acknowledge that it is not efficient or optimized.
+format was not efficiency and I acknowledge that it is not efficient or optimized. All code referenced below can be found in the pcImage class in the pcImage.py file.
 
 **Basic Format of a .pcimg File**
 
@@ -20,13 +20,18 @@ The format can load black and white, grayscale, and color (RGB) images. The form
 An HTML file called imageViewer.html (see Computer Vision Folder) is used to display the .pcimg files onto a canvas on a webpage (color images are encoded using utf8 because it is backwards
 compatible with the 7-bit ASCII characters).
 
+**Storage of a .pcimg File**
+
+To manipulate our .pcimg file, it is stored in lists of lists where image[1][2] returns the pixel value (0-127) of the pixel at (2,3).
+
+## Viewing a .pcimg Image
+
+The imageViewer.html file brings you to a page that allows you to upload a .pcimg to view. This works by embedding some JavaScript code that reads the file type and converts the values in the .pcimg file
+to pixels that are then plotted as 1x1 rectangles in an HTML Canvas element.
+
 **Example:**
 
 ![Screenshot 2024-09-04 151605](https://github.com/user-attachments/assets/93cb322a-bf13-4b70-ab05-31769e8f8739)
-
-**Storing a .pcimg File**
-
-To manipulate our .pcimg file, it is stored in lists of lists where image[1][2] returns the pixel value (0-127) of the pixel at (2,3).
 
 ## Edge Detection
 Part of our work was implementing an edge detection algorithm by performing a convolution.
@@ -116,5 +121,8 @@ Then, we made a **findBlob()** function that convolutes the above image with thi
 
 ![Screenshot 2024-09-04 164543](https://github.com/user-attachments/assets/7da0148d-ef1b-4555-b7cb-6c4752d1b427)
 
+
+## Telling Time on a Black and White Clock
+### One final task with the file format was to be able to take a clock.pcimg image and then use the knowledge of the center and the black and white nature of the image to find the two hands on the clock and output the time. A report of my development process, including problems, solutions, and reflection, can be found in the Telling_Time_on_a_Clock_Report.docx file.
 
 
