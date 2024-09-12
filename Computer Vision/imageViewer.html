@@ -1,0 +1,123 @@
+<html>
+<input id=file type=file />
+<canvas id="showme" width="0" height="0"></canvas>
+
+<script language="JavaScript">
+document.getElementById('file').addEventListener('change', readFile, false);
+
+function readFile(evt) {
+
+var file=evt.target.files[0];
+var reader = new FileReader();
+reader.onload=function(loadEvent){
+	var fileContent=loadEvent.target.result.split("\n");
+	document.getElementById("showme").width=fileContent[0];
+	document.getElementById("showme").height=fileContent[1];
+	var context= document.getElementById("showme").getContext("2d");
+	var width=parseInt(fileContent[0]);
+	var height=parseInt(fileContent[1]);
+	var pixelLen= width*height;
+	var fileType = fileContent[2];
+	var pixels = fileContent[3];
+	
+	console.log(pixels.length);
+	console.log(pixelLen);
+	console.log(fileType);
+	for(var i =0;i<height;i++){
+		for(var j=0;j<width;j++){
+			p = width*i+j;
+
+			// COLOR
+			if(fileType==3){
+				reds=fileContent[3]
+				greens=fileContent[4]
+				blues=fileContent[5]
+				redPixCol=reds.charCodeAt(p);
+				greenPixCol=greens.charCodeAt(p);
+				bluePixCol=blues.charCodeAt(p);
+				if(redPixCol==128){redPixCol=10}
+				if(redPixCol==129){redPixCol=13}
+				redPixCol=redPixCol*2;//adjusting for 128 wide color space in pcimg
+				if(greenPixCol==128){greenPixCol=10}
+				if(greenPixCol==129){greenPixCol=13}
+				greenPixCol=greenPixCol*2;//adjusting for 128 wide color space in pcimg
+				if(bluePixCol==128){bluePixCol=10}
+				if(bluePixCol==129){bluePixCol=13}
+				bluePixCol=bluePixCol*2;//adjusting for 128 wide color space in pcimg
+				redPixCol=redPixCol.toString(16);
+				greenPixCol=greenPixCol.toString(16);
+				bluePixCol=bluePixCol.toString(16);
+				if (bluePixCol.length<2){
+					bluePixCol="0"+bluePixCol;
+				}
+				if (redPixCol.length<2){
+					redPixCol="0"+redPixCol;
+				}
+				if (greenPixCol.length<2){
+					greenPixCol="0"+greenPixCol;
+				}
+				
+				
+				context.fillStyle="#"+redPixCol+greenPixCol+bluePixCol;
+				context.fillRect(j,i,1,1)				
+			
+			
+			
+			
+			}else{
+
+				// GRAYSCALE
+				if(fileType==2){
+					pixcol=pixels.charCodeAt(p);
+					if(pixcol==128){pixcol=10}
+					if(pixcol==129){pixcol=13}
+					pixcol=pixcol*2;//adjusting for 128 wide color space in pcimg
+				}else{ //BLACK AND WHITE WHERE 'X' IS BLACK AND ' ' IS WHITE
+					thisPixel=pixels[p];
+					console.log(thisPixel);
+					if(thisPixel=="X"){
+						pixcol=0;
+					}else{
+						pixcol=255;
+					}
+				}
+				pixcol=pixcol.toString(16);
+				context.fillStyle="#"+pixcol+pixcol+pixcol;
+				context.fillRect(j,i,1,1)
+
+			}
+
+
+
+			
+		}
+	
+	}
+	
+	
+	// for(var i=0;i<100;i++){
+	
+	//}
+	// context.fillRect(col,row,1,1)
+	
+	
+}
+reader.readAsText(file);
+
+  
+  
+  // You will need to instantiate a FileReader object. Note that in JavaScript
+  // you need to instantiate objects using    "new"  .
+  // You will need to attach an onload event handler to the FileReader that 
+  // parses the file's content (remember, objects have a "target" property).
+  // Finally, you need to actually read the file (use "readAsText", since we
+  // are dealing with an ASCII file)
+  //     
+  // When in doubt, print things out to the console ("console.log()").
+  // You can see the console by right-clicking anywhere in your browser
+  // and selecting "Inspect" and then "Console".
+
+
+}
+</script>
+</html>
